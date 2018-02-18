@@ -1,18 +1,17 @@
-<section>
-
+        <section>
           <h2>Ad-Hoc Commands</h2>
           <pre class="language-yaml"><code>
 # check all my inventory hosts are ready to be
 # managed by Ansible
 $ ansible all -m ping
 
-# collect and display the discovered facts
-# for the localhost
-$ ansible localhost -m setup
-
 # run the uptime command on all hosts in the
 # web group
 $ ansible web -m command -a &quot;uptime&quot;
+
+# collect and display the discovered facts
+# for the localhost
+$ ansible localhost -m setup
           </code></pre>
           <aside class="notes">
             <p>Ad-hoc commands are quick checks on your servers that you don’t want to preserve in an Ansible playbook.</p>
