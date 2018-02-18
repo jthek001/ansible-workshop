@@ -7,7 +7,7 @@ tasks:
   yum:
     name: httpd
     state: latest
-  <mark>notify: restart httpd</mark>
+  <mark>notify: restart_httpd</mark>
 
 - name: Ensure latest index.html file is present
   copy:
@@ -15,7 +15,7 @@ tasks:
     dest: /var/www/html/
 
 <mark>handlers:</mark>
-- name: Restart httpd
+- name: restart_httpd
   service:
     name: httpd
     state: restarted
