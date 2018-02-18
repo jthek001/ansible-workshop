@@ -1,0 +1,50 @@
+        <section>
+          <section>
+            <h2>Ad-Hoc Commands</h2>
+            <p>An ad-hoc command is a single Ansible task to perform quickly, but don’t want to save for later.</p>
+            <aside class="notes">
+              <p>Ansible ad-hoc commands is a good place to start to understand the basics of what Ansible can do before learning how to use playbooks &ndash; ad-hoc commands can also be used to do quick things that you might not necessarily want to write a full playbook for.</p>
+              <p>Generally speaking, the true power of Ansible lies in playbooks. So why would you use ad-hoc tasks versus playbooks?</p>
+              <p>For instance, if you wanted to restart a service on all of your lab nodes, you could execute a quick one-liner in Ansible without writing a playbook.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Ad-Hoc Commands: Common Options</h2>
+            <ul style="font-size: 0.75em;">
+              <li><b>-m MODULE_NAME, --module-name=MODULE_NAME</b><br/>Module name to execute the ad-hoc command</li>
+              <li><b>-a MODULE_ARGS, --args=MODULE_ARGS</b><br/>Module arguments for the ad-hoc command</li>
+              <li><b>-b, --become</b><br/>Run ad-hoc command with elevated rights such as sudo, the default method</li>
+              <li><b>-e EXTRA_VARS, --extra-vars=EXTRA_VARS</b><br/>Set additional variables as key=value or YAML/JSON</li>
+              <li><b>--version</b><br/>Display the version of Ansible</li>
+              <li><b>--help</b><br/>Display the MAN page for the Ansible tool</li>
+            </ul>
+            <aside class="notes">
+              <p>This slide shows essential command-line options for running ad-hoc commands that will be useful in our upcoming workshop assignment.</p>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <h2>Ad-Hoc Commands</h2>
+          <pre class="language-yaml"><code>
+# check all my inventory hosts are ready to be
+# managed by Ansible
+$ ansible all -m ping
+
+# collect and display the discovered facts
+# for the localhost
+$ ansible localhost -m setup
+
+
+# run the uptime command on all hosts in the
+# web group
+$ ansible web -m command -a &quot;uptime&quot;
+          </code></pre>
+          <aside class="notes">
+            <p>Ad-hoc commands are quick checks on your servers that you don’t want to preserve in an Ansible playbook.</p>
+            <p>An ad-hoc command can be used to do some tasks that you might not necessarily want to write a full playbook and save for later.</p>
+            <p>This is a good place to start to understand the basics of what Ansible can do prior to learning about playbooks where the true power of Ansible automation lies.</p>
+            <p>For more information see <a href="http://docs.ansible.com/ansible/intro_adhoc.html">Introduction To Ad-Hoc Commands</a>.</p>
+          </aside>
+        </section>
+      </section>
