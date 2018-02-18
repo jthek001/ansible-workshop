@@ -1,0 +1,10 @@
+---
+# defaults file for setup-ansible-red
+workshop_web_path: /var/www/html/ansiblered
+
+
+workshop_name: Ansible Essentials Workshop
+workshop_presenter: Kevin Holmes
+workshop_title: Senior Specialist Solutions Architect
+workshop_message: 'kev@redhat.com'
+

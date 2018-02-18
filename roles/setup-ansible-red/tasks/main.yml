@@ -1,0 +1,5 @@
+---
+# tasks file for setup-ansible-red
+- include_tasks: configure-httpd.yml
+- include_tasks: deploy-deck-ansible.yml
+
