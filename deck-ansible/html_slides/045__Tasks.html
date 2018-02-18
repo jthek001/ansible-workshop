@@ -1,0 +1,33 @@
+<section>
+
+          <h2>Tasks</h2>
+          <pre class="language-yaml"><code data-noescape>
+---
+- name: Ensure apache is installed and started
+  hosts: web
+  become: yes
+  vars:
+    http_port: 80
+
+  tasks:
+  - name: Ensure latest httpd package is present
+    <mark>yum:</mark>
+      <mark>name: httpd</mark>
+      <mark>state: latest</mark>
+
+  - name: Ensure latest index.html file is present
+    <mark>copy:</mark>
+      <mark>src: files/index.html</mark>
+      <mark>dest: /var/www/html/</mark>
+
+  - name: Ensure httpd is started
+    <mark>service:</mark>
+      <mark>name: httpd</mark>
+      <mark>state: started</mark>
+          </code></pre>
+          <aside class="notes">
+            <p>Here we see modules, such as yum, being applied to a to perform a unit of automation such as to assure the latest httpd package is present on a host.</p>
+          </aside>
+        </section>
+        
+

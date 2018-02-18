@@ -1,0 +1,28 @@
+<section>
+
+          <h2>Sidebar: Discovered Facts</h2>
+          <p>Facts are bits of information derived from examining a host systems that are stored as variables for later use in a play.</p>
+          <pre class="language-yaml"><code>
+$ ansible localhost -m setup
+localhost | success >> {
+  "ansible_facts": {
+      "ansible_default_ipv4": {
+          "address": "192.168.1.37",
+          "alias": "wlan0",
+          "gateway": "192.168.1.1",
+          "interface": "wlan0",
+          "macaddress": "c4:85:08:3b:a9:16",
+          "mtu": 1500,
+          "netmask": "255.255.255.0",
+          "network": "192.168.1.0",
+          "type": "ether"
+      },
+          </code></pre>
+          <aside class="notes">
+            <p>The second ad-hoc command example from the prior slide provides the following JSON output of a localhost facts run.</p>
+            <p>Facts are bits of information derived from examining a host systems that are stored as variables for later use. An example of this might be the IP address of the host, or what operating system it is running. The facts Ansible will discover about a host is extensive. What's shown here is just a small sample. Run <code>ansible localhost -m setup</code> for a more complete representation.</p>
+            <p>Ansible collects facts using the <code>setup</code> module. By default, Ansible will run the <code>setup</code> module before any other tasks are executed in a playbook. These facts can be referenced by subsequent automation tasks on a per host-basis during the playbook run.</p>
+          </aside>
+        </section>
+        
+
