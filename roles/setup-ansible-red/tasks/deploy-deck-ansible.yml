@@ -1,9 +1,4 @@
 ---
-- name: remove directory for basics deck
-  file:
-    path: "{{ workshop_web_path }}/deck-ansible"
-    state: absent
-
 - name: create directory for basics deck
   file:
     path: "{{ workshop_web_path }}/deck-ansible"
@@ -14,6 +9,9 @@
   synchronize:
     src: files/deck-ansible/
     dest: "{{ workshop_web_path }}/deck-ansible/"
+    delete: yes
+    recursive: yes
+
 
 - name: deploy the PHP file that generates the deck
   template:
