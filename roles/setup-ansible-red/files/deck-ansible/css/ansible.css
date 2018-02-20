@@ -21,7 +21,8 @@ body {
 }
 
 mark{
-  background: #5bbdbf;
+  background-color: yellow;
+  color: black;
 }
 
 mark span.hljs-number{
