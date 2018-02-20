@@ -27,6 +27,7 @@
     <!--link rel="stylesheet" href="css/zenburn.css"-->
     <link rel="stylesheet" href="css/prism.min.css">
 
+    <link rel="stylesheet" href="css/faketerminal.css">
 
   </head>
   <body>
@@ -53,13 +54,16 @@
 <?php
 
 // We look through the html_slides dir and include them all in order (numeric, alphabetic)
-$files = scandir(preg_replace("/index.php/","html_slides/",$_SERVER['SCRIPT_FILENAME']));
-foreach( $files as $pagekey => $htmlinclude){
-	$count = ($count + 1);
 
-	if ( preg_match("/\.html$/",$htmlinclude)  ){
-		include("html_slides/" . $htmlinclude);
-	}
+$mydir = preg_replace("/index.php/","html_slides/",$_SERVER['SCRIPT_FILENAME']);
+$files = explode("\n",shell_exec("find $mydir -maxdepth 3 -type f | sort"));
+
+foreach( $files as $key => $htmlinc){
+        $count = ($count + 1);
+        if ( preg_match("/\.html$/",$htmlinc)  ){
+                $htmlinc = str_replace("$mydir","",$htmlinc);
+                include("html_slides/" . $htmlinc);
+        }
 
 }
 
