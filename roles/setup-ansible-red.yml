@@ -2,7 +2,7 @@
 - name: MAIN | Deploying subtasks
   hosts: all
   remote_user: root
-  gather_facts: yes
+  gather_facts: no
 
 
   roles:
