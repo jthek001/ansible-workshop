@@ -11,13 +11,3 @@
     dest: "{{ workshop_web_path }}/deck-ansible/"
     delete: yes
     recursive: yes
-
-
-- name: deploy the PHP file that generates the deck
-  template:
-    src: templates/index.php_ansible_basic
-    dest: "{{ workshop_web_path }}/deck-ansible/index.php"
-    owner: apache
-    group: apache
-    mode: 0644
-    backup: yes
