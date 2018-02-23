@@ -19,6 +19,14 @@
     name: httpd.service
     enabled: yes
 
+- name: deploy the PHP default preferences file template
+  template:
+    src: templates/deck-ansible_prefs_default.prefs.php
+    dest: "{{ workshop_web_path }}/deck-ansible/prefs/default.prefs.php"
+    mode: 0644
+    backup: yes
+
+
 ### Ansible SELinux module does not appear to work recursively so we use ugly raw
 - name: "Set selinux context recursively httpd_sys_rw_content_t {{ ncwebpath }}"
   shell: "chcon -R -t httpd_sys_rw_content_t {{ workshop_web_path }}"
