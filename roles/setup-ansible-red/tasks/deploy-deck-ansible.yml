@@ -11,3 +11,7 @@
     dest: "{{ workshop_web_path }}/deck-ansible/"
     delete: yes
     recursive: yes
+    rsync_opts:
+      - "--no-motd"
+      - "--exclude=prefs"
+
