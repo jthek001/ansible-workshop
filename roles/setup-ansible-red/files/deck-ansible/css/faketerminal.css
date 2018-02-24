@@ -14,6 +14,7 @@
     top: 7px;
     left: 5px;
 }
+
 .terminal .circle {
     width: 12px;
     height: 12px;
@@ -23,6 +24,7 @@
     border-width: 1px;
     border-style: solid;
 }
+
 .title{
     text-align: center;
     font-size: 12px;
@@ -33,7 +35,25 @@
 .yellow{ background: #F5C04F; border-color: #D6A13D; }
 .clear{clear: both;}
 
-.terminal .body {
+.terminal .bodys {
+    background: black;
+    color: #7AFB4C;
+    padding: 15px;
+    overflow: auto;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+.terminal .bodym {
+    background: black;
+    color: #7AFB4C;
+    padding: 15px;
+    overflow: auto;
+    font-family: monospace;
+    font-size: 24px;
+}
+
+.terminal .bodyl {
     background: black;
     color: #7AFB4C;
     padding: 15px;
