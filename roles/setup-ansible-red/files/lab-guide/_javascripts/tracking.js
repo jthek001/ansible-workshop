@@ -1,0 +1,1 @@
+(function(e,t,n,r,i){e[r]=e[r]||[],e[r].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var s=t.getElementsByTagName(n)[0],o=t.createElement(n),u=r!="dataLayer"?"&l="+r:"";o.async=!0,o.src="//www.googletagmanager.com/gtm.js?id="+i+u,s.parentNode.insertBefore(o,s)})(window,document,"script","dataLayer","GTM-PMDVKG");

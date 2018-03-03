@@ -4,10 +4,17 @@
     name: "{{ item }}"
     state: latest
   with_items:
-  - unzip
-  - policycoreutils-python
   - httpd
+  - mariadb
+  - mariadb-server
+  - MySQL-python
   - php
+  - php-mysql
+  - policycoreutils-python
+  - unzip
+
+
+
 
 - name: start services
   service:

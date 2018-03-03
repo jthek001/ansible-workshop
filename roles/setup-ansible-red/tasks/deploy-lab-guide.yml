@@ -1,0 +1,17 @@
+---
+- name: create directory for lab guide
+  file:
+    path: "{{ workshop_web_path }}/lab-guide"
+    state: directory
+    mode: 0755
+
+- name: synchronize html lab guide
+  synchronize:
+    src: files/lab-guide/
+    dest: "{{ workshop_web_path }}/lab-guide/"
+    delete: yes
+    recursive: yes
+    rsync_opts:
+      - "--no-motd"
+#      - "--exclude=prefs"
+
