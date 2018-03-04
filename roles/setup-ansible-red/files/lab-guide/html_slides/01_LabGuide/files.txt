@@ -1,7 +1,0 @@
-https://www.ansible.com/hs-fs/hub/330046/file-448313641-png/favicon.png
-https://assets.openshift.net/content/html5shiv.js
-https://assets.openshift.net/content/respond.js
-https://assets.openshift.net/content/modernizr.js
-https://assets.openshift.net/content/subdomain.js
-https://assets.openshift.net/app/assets/site/tracking.js
-

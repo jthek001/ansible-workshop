@@ -1,5 +1,19 @@
 ---
 # tasks file for setup-ansible-red
 - include_tasks: deploy-deck-ansible.yml
+  tags:
+  - content
+  - deck-ansible
+
 - include_tasks: deploy-lab-guide.yml
+  tags:
+  - content
+  - lab-guide
+
 - include_tasks: configure-httpd.yml
+  tags:
+  - software
+  - content
+  - deck-ansible
+  - lab-guide
+

@@ -16,7 +16,7 @@
     recursive: yes
     rsync_opts:
       - "--no-motd"
-      - "--exclude=prefs"
+      - "--exclude=prefs/default.prefs.php"
   tags:
   - content
   - deck-ansible

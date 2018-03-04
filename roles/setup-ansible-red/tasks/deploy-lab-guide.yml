@@ -16,6 +16,7 @@
     recursive: yes
     rsync_opts:
       - "--no-motd"
+      - "--exclude=prefs/default.prefs.php"
   tags:
   - content
   - lab-guide

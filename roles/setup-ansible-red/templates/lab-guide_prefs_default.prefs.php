@@ -1,10 +1,10 @@
 <?php
 
-$workshop_image = '{{ workshop_image }}';
-$workshop_name = '{{ workshop_name }}';
-$workshop_presenter = '{{ workshop_presenter }}';
-$workshop_title = '{{ workshop_title }}';
-$workshop_message = '{{ workshop_message }}';
+$labguide_image = '{{ labguide_image }}';
+$labguide_name = '{{ labguide_name }}';
+$labguide_presenter = '{{ labguide_presenter }}';
+$labguide_title = '{{ labguide_title }}';
+$labguide_message = '{{ labguide_message }}';
 
 ?>
 
