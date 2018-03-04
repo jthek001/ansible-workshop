@@ -2,5 +2,4 @@
 # tasks file for setup-ansible-red
 - include_tasks: deploy-deck-ansible.yml
 - include_tasks: deploy-lab-guide.yml
-- include_tasks: install-wppackage.yml
 - include_tasks: configure-httpd.yml

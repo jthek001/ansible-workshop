@@ -11,6 +11,13 @@ workshop_presenter: '&nbsp;'
 workshop_title: '&nbsp;'
 workshop_message: '&nbsp;'
 
+# Defaults for the main lab guide
+labguide_image: images/ansible-logo.png
+labguide_name: Ansible Essentials Lab Exercises
+labguide_presenter: '&nbsp;'
+labguide_title: '&nbsp;'
+labguide_message: '&nbsp;'
+
 # WordPress Configuration Pieces
 wpdbname: AnsibleRed
 wpdbuser: ansiblered

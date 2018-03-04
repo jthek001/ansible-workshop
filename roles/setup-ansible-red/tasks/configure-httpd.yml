@@ -5,33 +5,45 @@
     state: latest
   with_items:
   - httpd
-  - mariadb
-  - mariadb-server
-  - MySQL-python
   - php
-  - php-mysql
   - policycoreutils-python
   - unzip
-
-
-
+  tags:
+  - software
 
 - name: start services
   service:
     name: httpd.service
     state: started
+  tags:
+  - software
 
 - name: enable services
   service:
     name: httpd.service
     enabled: yes
+  tags:
+  - software
 
-- name: deploy the PHP default preferences file template
+- name: deploy the PHP default preferences file template for the slide deck
   template:
     src: templates/deck-ansible_prefs_default.prefs.php
     dest: "{{ workshop_web_path }}/deck-ansible/prefs/default.prefs.php"
     mode: 0644
     backup: yes
+  tags:
+  - content
+  - deck-ansible
+
+- name: deploy the PHP default preferences file template for the lab guide
+  template:
+    src: templates/lab-guide_prefs_default.prefs.php
+    dest: "{{ workshop_web_path }}/lab-guide/prefs/default.prefs.php"
+    mode: 0644
+    backup: yes
+  tags:
+  - content
+  - lab-guide
 
 
 ### Ansible SELinux module does not appear to work recursively so we use ugly raw
@@ -46,4 +58,6 @@
     dest: /etc/httpd/conf/httpd.conf
     regexp: '^DocumentRoot '
     line: 'DocumentRoot "{{ workshop_web_path }}"'
+  tags:
+  - software
 
