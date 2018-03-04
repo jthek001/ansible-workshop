@@ -24,7 +24,9 @@ require_once($mydir . "/head.html");
 /*	We build an array and include each HTML slides from the diretory*/
 $html_files = explode("\n",shell_exec("find $html_dir -maxdepth 3 -type f -iname \"*html\" | sort"));
 foreach( $html_files as $key => $htmlinc){
-	if (file_exists($htmlinc)) include($htmlinc);
+	$localdir = str_replace($html_dir . '/',"",$htmlinc);
+	$localfile = preg_replace("/^.*\//","",$htmlinc);
+	if ( (file_exists($htmlinc)) and (!preg_match("/^_/",$localdir)) and (!preg_match("/^_/",$localfile)) ) include($htmlinc);
 }
 
 
