@@ -1,0 +1,36 @@
+---
+# tasks file for ansiblered-infrastructure---
+- name: installing the required software
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+  - httpd
+  - php
+  - policycoreutils-python
+  - unzip
+  tags:
+  - software
+
+- name: start services
+  service:
+    name: httpd.service
+    state: started
+  tags:
+  - software
+
+- name: enable services
+  service:
+    name: httpd.service
+    enabled: yes
+  tags:
+  - software
+
+- name: "Change httpd.conf to make the web root {{ workshop_web_path }}"
+  lineinfile:
+    dest: /etc/httpd/conf/httpd.conf
+    regexp: '^DocumentRoot '
+    line: 'DocumentRoot "{{ workshop_web_path }}"'
+  tags:
+  - software
+

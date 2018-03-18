@@ -1,0 +1,10 @@
+---
+# defaults file for ansiblered-lab-guide
+
+labguide_image: images/ansible-logo.png
+labguide_name: Ansible Essentials Lab Exercises
+labguide_presenter: '&nbsp;'
+labguide_title: '&nbsp;'
+labguide_message: '&nbsp;'
+
+

@@ -1,0 +1,29 @@
+<section>
+
+          <h2>Project with Embedded Roles Example</h2>
+          <pre class="language-yaml"><code>
+site.yml
+roles/
+   common/
+     files/
+     templates/
+     tasks/
+     handlers/
+     vars/
+     defaults/
+     meta/
+   apache/
+     files/
+     templates/
+     tasks/
+     handlers/
+     vars/
+     defaults/
+     meta/
+          </code></pre>
+          <aside class="notes">
+            <p>This slide shows an example file system with a top-level playbook (site.yml) and two sample roles (common and apache) embedded in the project. Notice how the file structure under each role are similar to what we find in a play. Role deconstruct the content we'd put in a play and package it up in such a way that it is portable and easily shared and reused.</p>
+          </aside>
+        </section>
+        
+
