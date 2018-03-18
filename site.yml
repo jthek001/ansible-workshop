@@ -1,0 +1,27 @@
+---
+- name: AnsibleRed Deployment
+  hosts: all
+  remote_user: root
+  gather_facts: no
+
+  vars:
+  - workshop_web_path: /var/www/html/ansiblered
+
+  tasks:
+  - import_role:
+      name: ansiblered-infrastructure
+    tags:
+    - software
+
+  - import_role:
+      name: ansiblered-deck-ansible
+    tags:
+    - content
+    - deck-ansible
+
+  - import_role:
+      name: ansiblered-lab-guide
+    tags:
+    - content
+    - lab-guide
+

@@ -1,0 +1,45 @@
+---
+# tasks file for ansiblered-deck-ansible---
+
+- name: deploy the PHP default preferences file template for the slide deck
+  template:
+    src: templates/deck-ansible_prefs_default.prefs.php
+    dest: "{{ workshop_web_path }}/deck-ansible/prefs/default.prefs.php"
+    mode: 0644
+    backup: yes
+  tags:
+  - content
+  - deck-ansible
+
+#- name: create directory for basics deck
+#  file:
+#    path: "{{ workshop_web_path }}/deck-ansible"
+#    state: directory
+#    mode: 0755
+#  tags:
+#  - content
+#  - deck-ansible
+
+- name: synchronize html basics deck
+  synchronize:
+    src: files/deck-ansible/
+    dest: "{{ workshop_web_path }}/deck-ansible/"
+    delete: yes
+    recursive: yes
+    rsync_opts:
+      - "--no-motd"
+      - "--exclude=prefs/default.prefs.php"
+  tags:
+  - content
+  - deck-ansible
+
+### Ansible SELinux module does not appear to work recursively so we use ugly raw
+- name: "Set selinux context recursively httpd_sys_rw_content_t {{ ncwebpath }}"
+  shell: "chcon -R -t httpd_sys_rw_content_t {{ workshop_web_path }}"
+  register: selinuxresult
+  changed_when: selinuxresult == "pink elephants"
+  ignore_errors: yes
+
+
+
+
