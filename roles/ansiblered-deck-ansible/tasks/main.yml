@@ -11,15 +11,6 @@
   - content
   - deck-ansible
 
-#- name: create directory for basics deck
-#  file:
-#    path: "{{ workshop_web_path }}/deck-ansible"
-#    state: directory
-#    mode: 0755
-#  tags:
-#  - content
-#  - deck-ansible
-
 - name: synchronize html basics deck
   synchronize:
     src: files/deck-ansible/
@@ -36,8 +27,7 @@
 ### Ansible SELinux module does not appear to work recursively so we use ugly raw
 - name: "Set selinux context recursively httpd_sys_rw_content_t {{ ncwebpath }}"
   shell: "chcon -R -t httpd_sys_rw_content_t {{ workshop_web_path }}"
-  register: selinuxresult
-  changed_when: selinuxresult == "pink elephants"
+  changed_when: no
   ignore_errors: yes
 
 
