@@ -1,5 +1,13 @@
 ---
 # tasks file for ansiblered-lab-guide---
+- name: build the directory if it does not already exist
+  file:
+    path: "{{ workshop_web_path }}/deck-ansible/prefs/
+    state: directory
+  tags:
+  - content
+  - deck-ansible
+
 - name: deploy the PHP default preferences file template for the lab guide
   template:
     src: templates/lab-guide_prefs_default.prefs.php
