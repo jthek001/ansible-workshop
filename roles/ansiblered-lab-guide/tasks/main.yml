@@ -2,7 +2,7 @@
 # tasks file for ansiblered-lab-guide---
 - name: build the directory if it does not already exist
   file:
-    path: "{{ workshop_web_path }}/deck-ansible/prefs/
+    path: "{{ workshop_web_path }}/deck-ansible/prefs/"
     state: directory
   tags:
   - content
