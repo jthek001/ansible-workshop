@@ -7,12 +7,9 @@
         <div class="title">Ansible Terminal</div>
     </div>
     <pre class="bodymw">
----
 - name: Ensure apache is installed and started
   <mark>hosts: web</mark>
   become: yes
-  vars:
-    http_port: 80
 
   tasks:
   - name: Ensure httpd package is present

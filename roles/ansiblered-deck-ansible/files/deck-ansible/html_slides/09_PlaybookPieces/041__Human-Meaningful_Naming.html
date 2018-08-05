@@ -7,27 +7,25 @@
         <div class="title">Ansible Terminal</div>
     </div>
     <pre class="bodymw">
- - <mark>name: install and start apache</mark>
-   hosts: web
-   become: yes
-   vars:
-     http_port: 80
+- <mark>name: install and start apache</mark>
+  hosts: web
+  become: yes
+  
+  tasks:
+ - <mark>name: httpd package is present</mark>
+    yum:
+      name: httpd
+      state: latest
 
-   tasks:
-   - <mark>name: httpd package is present</mark>
-     yum:
-       name: httpd
-       state: latest
+  - <mark>name: latest index.html file is present</mark>
+    copy:
+      src: files/index.html
+      dest: /var/www/html/
 
-   - <mark>name: latest index.html file is present</mark>
-     copy:
-       src: files/index.html
-       dest: /var/www/html/
-
-   - <mark>name: httpd is started</mark>
-     service:
-        name: httpd
-        state: started
+  - <mark>name: httpd is started</mark>
+    service:
+      name: httpd
+      state: started
     </pre>
 </div>
 
