@@ -19,9 +19,9 @@
       <mark>name: httpd</mark>
       <mark>state: latest</mark>
 
-  - name: Ensure latest index.html file is present
-    <mark>copy:</mark>
-      <mark>src: files/httpd.conf.j2</mark>
+  - name: Verify correct config file is present
+    <mark>template:</mark>
+      <mark>src: templates/httpd.conf.j2</mark>
       <mark>dest: /etc/httpd/conf/httpd.conf</mark>
 
   - name: Ensure httpd is started
