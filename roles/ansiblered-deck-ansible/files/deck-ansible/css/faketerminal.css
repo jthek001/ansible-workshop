@@ -44,6 +44,16 @@
     font-size: 16px;
 }
 
+.terminal .bodysw {
+    background: black;
+    color: #FFFFFF;
+    padding: 15px;
+    overflow: auto;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+
 .terminal .bodym {
     background: black;
     color: #7AFB4C;
