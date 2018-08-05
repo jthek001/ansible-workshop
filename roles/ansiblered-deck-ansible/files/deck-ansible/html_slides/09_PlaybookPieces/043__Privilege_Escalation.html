@@ -1,7 +1,12 @@
-<section>
+<section id="PrivilegeEscalation">
 
-          <h2>Privilege Escalation</h2>
-          <pre class="language-yaml"><code data-noescape>
+<center><h2>PRIVILEGE ESCALATION</h2></center>
+
+<div class="terminal space shadow">
+    <div class="top">
+        <div class="title">Ansible Terminal</div>
+    </div>
+    <pre class="bodymw">
 ---
 - name: Ensure apache is installed and started
   hosts: web
@@ -24,7 +29,8 @@
     service:
       name: httpd
       state: started
-          </code></pre>
+    </pre>
+</div>
           <aside class="notes">
             <p>Ansible allows you to &quot;become&quot; another user or with elevated rights to execute a task or an entire play (shown above). This is done using existing privilege escalation tools, which you probably already use or have configured, like sudo (the default), su, pfexec, doas, pbrun, dzdo, ksu and others.</p>
             <p>For more details see <a href="http://docs.ansible.com/ansible/become.html">the Privilege Escalation page</a> in the Ansible documentation.</p>

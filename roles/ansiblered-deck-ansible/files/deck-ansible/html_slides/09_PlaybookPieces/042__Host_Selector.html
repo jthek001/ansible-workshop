@@ -1,7 +1,12 @@
-<section>
+<section id="HostSelector">
 
-          <h2>Host Selector</h2>
-          <pre class="language-yaml"><code data-noescape>
+<center><h2>HOST SELECTOR</h2></center>
+
+<div class="terminal space shadow">
+    <div class="top">
+        <div class="title">Ansible Terminal</div>
+    </div>
+    <pre class="bodymw">
 ---
 - name: Ensure apache is installed and started
   <mark>hosts: web</mark>
@@ -24,7 +29,8 @@
     service:
       name: httpd
       state: started
-          </code></pre>
+    </pre>
+</div>
           <aside class="notes">
             <p>The Ansible play host selector defines which nodes in the inventory the automation is targeting.</p>
             <p>In this example, a single group of &quot;web&quot; is being targeted. Ansible supports targeting intersections, unions and filters of multiple groups or hosts though.</p>

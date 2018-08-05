@@ -53,9 +53,27 @@
     font-size: 24px;
 }
 
+.terminal .bodymw {
+    background: black;
+    color: #FFFFFF;
+    padding: 15px;
+    overflow: auto;
+    font-family: monospace;
+    font-size: 24px;
+}
+
 .terminal .bodyl {
     background: black;
     color: #7AFB4C;
+    padding: 15px;
+    overflow: auto;
+    font-family: monospace;
+    font-size: 36px;
+}
+
+.terminal .bodylw {
+    background: black;
+    color: #FFFFFF;
     padding: 15px;
     overflow: auto;
     font-family: monospace;

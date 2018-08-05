@@ -1,23 +1,31 @@
-<section>
+<section id="DiscoveredFacts">
 
-          <h2>Sidebar: Discovered Facts</h2>
-          <p>Facts are bits of information derived from examining a host systems that are stored as variables for later use in a play.</p>
-          <pre class="language-yaml"><code>
+<center><h2>DISCOVERED FACTS</h2>
+</center>
+
+<div class="terminal space shadow">
+    <div class="top">
+        <div class="title">Ansible Terminal</div>
+    </div>
+    <pre class="bodyl">
+<font color="silver"># Small snippet of discovered facts</font>
 $ ansible localhost -m setup
-localhost | success >> {
-  "ansible_facts": {
-      "ansible_default_ipv4": {
-          "address": "192.168.1.37",
-          "alias": "wlan0",
-          "gateway": "192.168.1.1",
-          "interface": "wlan0",
-          "macaddress": "c4:85:08:3b:a9:16",
-          "mtu": 1500,
-          "netmask": "255.255.255.0",
-          "network": "192.168.1.0",
-          "type": "ether"
+<font color="yellow">localhost | success >> </font>{
+  <font color="cyan">"ansible_facts"</font>: {
+      <font color="cyan">"ansible_default_ipv4"</font>: {
+          <font color="cyan">"address"</font>:<font color="yellow"> "192.168.1.37"</font>,
+          <font color="cyan">"alias"</font>:<font color="yellow"> "wlan0"</font>,
+          <font color="cyan">"gateway"</font>:<font color="yellow"> "192.168.1.1"</font>,
+          <font color="cyan">"interface"</font>:<font color="yellow"> "wlan0"</font>,
+          <font color="cyan">"macaddress"</font>:<font color="yellow"> "c4:85:08:3b:a9:16"</font>,
+          <font color="cyan">"mtu"</font>:<font color="yellow"> 1500</font>,
+          <font color="cyan">"netmask"</font>:<font color="yellow"> "255.255.255.0"</font>,
+          <font color="cyan">"network"</font>:<font color="yellow"> "192.168.1.0"</font>,
+          <font color="cyan">"type"</font>:<font color="yellow"> "ether"</font>
       },
-          </code></pre>
+    </pre>
+</div>
+
           <aside class="notes">
             <p>The second ad-hoc command example from the prior slide provides the following JSON output of a localhost facts run.</p>
             <p>Facts are bits of information derived from examining a host systems that are stored as variables for later use. An example of this might be the IP address of the host, or what operating system it is running. The facts Ansible will discover about a host is extensive. What's shown here is just a small sample. Run <code>ansible localhost -m setup</code> for a more complete representation.</p>

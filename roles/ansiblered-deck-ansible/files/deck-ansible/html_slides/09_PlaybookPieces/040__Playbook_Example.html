@@ -1,13 +1,15 @@
-<section>
+<section id="PlaybookExample">
 
-          <h2>Playbook Example</h2>
-          <pre class="language-yaml"><code data-noescape>
----
+<center><h2>Playbook Example</h2></center>
+
+<div class="terminal space shadow">
+    <div class="top">
+        <div class="title">Ansible Terminal</div>
+    </div>
+    <pre class="bodymw">
 - name: Ensure apache is installed and started
   hosts: web
   become: yes
-  vars:
-    http_port: 80
 
   tasks:
   - name: Ensure httpd package is present
@@ -18,13 +20,17 @@
   - name: Ensure latest index.html file is present
     copy:
       src: files/index.html
-      dest: /var/www/html/
+      dest: /var/www/html/index.html
 
   - name: Ensure httpd is started
     service:
       name: httpd
       state: started
-          </code></pre>
+    </pre>
+</div>
+
+
+
           <aside class="notes">
             <p>Here we can see an example of a simple but complete Ansible play. The slides that follow will explore each of these parts and what they do.</p>
           </aside>

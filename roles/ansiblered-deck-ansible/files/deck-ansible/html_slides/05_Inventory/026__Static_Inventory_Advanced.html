@@ -1,7 +1,13 @@
-<section>
+<section id="StaticInventoryExampleAdvanced">
 
-          <h2>Static Inventory Example</h2>
-          <pre class="language-yaml"><code>
+<center><h2>A MORE ADVANCED STATIC INVENTORY EXAMPLE</h2></center>
+
+<div class="terminal space shadow">
+    <div class="top">
+        <div class="title">Ansible Terminal</div>
+    </div>
+    <pre class="bodyl">
+<font color="silver"># A more advanced static inventory example:</font>
 [control]
 control ansible_host=10.42.0.2
 
@@ -12,9 +18,11 @@ node-[1:3] ansible_host=10.42.0.[6:8]
 haproxy ansible_host=10.42.0.100
 
 [all:vars]
-ansible_user=vagrant
-ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
-          </code></pre>
+ansible_user=kev
+ansible_ssh_private_key_file=/home/kev/.ssh/id_rsa
+    </pre>
+</div>
+
           <aside class="notes">
             <p>The example shown here is a more practical and common example of a static inventory file.</p>
             <p>Static inventory files are expressed in INI format. The headings in brackets are group names, which are used in classifying systems and deciding what systems you are controlling at what times and for what purpose. Hosts can belong to multiple groups and groups can be members of other groups. (The latter is not shown here.)</p>

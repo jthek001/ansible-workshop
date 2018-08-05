@@ -1,0 +1,34 @@
+<section id="StaticInventoryExampleWin">
+
+<center><h2>A WINDOWS STATIC INVENTORY EXAMPLE</h2></center>
+
+<div class="terminal space shadow">
+    <div class="top">
+        <div class="title">Ansible Terminal</div>
+    </div>
+    <pre class="bodym">
+<font color="silver"># Windows vars inventory example:</font>
+[winservers]
+blueiris		ansible_host=10.10.2.20
+winfileprd[1:3]		ansible_host=10.13.128.[7:9]
+winwebsrv01		ansible_host=10.14.27.16
+
+[winservers:vars]
+ansible_user: Administrator
+<font color="gray">#ansible_connection: winrm</font>
+ansible_connection: credssp
+ansible_winrm_transport: basic
+ansible_port: 5986
+ansible_winrm_server_cert_validation: ignore
+<font color="gray"># may also be supplied at runtime with --ask-pass</font>
+ansible_password: FluffyBunny84
+    </pre>
+</div>
+
+          <aside class="notes">
+            <p>Notes go here.
+            </p>
+          </aside>
+        </section>
+        
+
