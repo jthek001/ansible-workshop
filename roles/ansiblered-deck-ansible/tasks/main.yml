@@ -1,6 +1,6 @@
 ---
 # tasks file for ansiblered-deck-ansible---
-- name: build the directory if it does not already exist
+- name: Assure our preferences files directory exists
   file:
     path: "{{ workshop_web_path }}/deck-ansible/prefs/"
     state: directory
