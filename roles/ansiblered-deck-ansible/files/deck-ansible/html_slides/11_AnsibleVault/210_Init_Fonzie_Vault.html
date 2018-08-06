@@ -1,0 +1,99 @@
+		<section id="VaultInit01">
+		<center><h2>ANSIBLE VAULT</h2>
+		<p>Ansible Vault Is Cool.</p>
+		</center>
+
+		<div class="terminal space shadow">
+		    <div class="top">
+		        <div class="title">Ansible Terminal</div>
+		    </div>
+		    <pre class="bodymw">
+<font color="silver">[root@GoKEV]#</font> ansible-vault create ronin_secret.yml
+
+
+
+
+
+
+
+
+		    </pre>
+		</div>
+
+
+
+            <aside class="notes">
+              <p>Stuff goes here</p>
+            </aside>
+          </section>
+          
+
+
+		<section id="VaultInit02">
+		<center><h2>ANSIBLE VAULT</h2>
+		<p>Ansible Vault Is Cool.</p>
+		</center>
+
+		<div class="terminal space shadow">
+		    <div class="top">
+		        <div class="title">Ansible Terminal</div>
+		    </div>
+		    <pre class="bodymw">
+<font color="silver">[root@GoKEV]#</font> ansible-vault create ronin_secret.yml
+
+New Vault password: <font color="red">redhat</font><img src="images/passwordkey.png">
+
+
+
+
+
+		    </pre>
+		</div>
+
+
+
+            <aside class="notes">
+              <p>Stuff goes here</p>
+            </aside>
+          </section>
+          
+
+
+
+		<section id="VaultInit03">
+		<center><h2>ANSIBLE VAULT</h2>
+		<p>Ansible Vault Is Cool.</p>
+		</center>
+
+		<div class="terminal space shadow">
+		    <div class="top">
+		        <div class="title">Ansible Terminal</div>
+		    </div>
+		    <pre class="bodymw">
+<font color="silver">[root@GoKEV]#</font> ansible-vault encrypt_string 'Jumped The Shark' --name 'fonzie_secret'
+
+New Vault password: 
+Confirm New Vault password: 
+
+fonzie_secret: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          6632363237353065633237633937353164646564633637646132
+          6465306431313861616533653164373061323463356238323530
+          3966323935656163380a63346130616663663263326666386436
+          6534633063303062363238393139
+
+Encryption successful
+
+<font color="silver">[root@GoKEV]#</font>
+
+		    </pre>
+		</div>
+
+
+
+            <aside class="notes">
+              <p>Stuff goes here</p>
+            </aside>
+          </section>
+          
+

@@ -25,15 +25,23 @@
     border-style: solid;
 }
 
-.title{
-    text-align: center;
-    font-size: 12px;
-
-}
 .red { background: #EC6A5F; border-color: #D04E42; }
 .green { background: #64CC57; border-color: #4EA73B; }
 .yellow{ background: #F5C04F; border-color: #D6A13D; }
 .clear{clear: both;}
+
+.title{
+    text-align: center;
+    font-size: 8px;
+
+}
+
+.terminal .title {
+    color: #000000;
+    padding: 0px;
+    font-family: verdana;
+    font-size: 16px;
+}
 
 .terminal .bodys {
     background: black;
@@ -41,6 +49,7 @@
     padding: 15px;
     overflow: auto;
     font-family: monospace;
+    text-align: center;
     font-size: 16px;
 }
 
@@ -91,7 +100,8 @@
 }
 
 .space {
-    margin: 25px;
+    background: black;
+    margin: 5px;
 }
 
 .shadow { 
