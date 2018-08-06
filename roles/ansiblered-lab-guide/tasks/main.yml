@@ -41,7 +41,7 @@
   - lab-guide
 
 ### Ansible SELinux module does not appear to work recursively so we use ugly raw
-- name: "Set selinux context recursively httpd_sys_rw_content_t {{ ncwebpath }}"
+- name: "Set selinux context recursively httpd_sys_rw_content_t {{ workshop_web_path }}"
   shell: "chcon -R -t httpd_sys_rw_content_t {{ workshop_web_path }}"
   register: selinuxresult
   changed_when: selinuxresult == "pink elephants"
