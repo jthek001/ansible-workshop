@@ -16,12 +16,12 @@
     yum:
       name: httpd
       state: latest
-    notify: httpd_running    
 
   - name: Verify correct index file is present
     template:
       src: files/index.html.j2
       dest: /var/www/html/index.html
+
 
 
 
