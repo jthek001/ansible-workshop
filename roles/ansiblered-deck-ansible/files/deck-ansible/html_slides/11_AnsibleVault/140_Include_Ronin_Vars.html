@@ -9,7 +9,7 @@
 		    </div>
 		    <pre class="bodymw">
 <mark>  vars_file:
-    - fonzie_secret.yml  </mark>
+    - ronin_secret.yml  </mark>
 
   tasks:
   - name: Ensure httpd package is present
@@ -18,17 +18,16 @@
       state: latest
     notify: httpd_running    
 
-  - name: Verify correct config file is present
+  - name: Verify correct index file is present
     template:
-      src: files/httpd.conf.j2
-      dest: /etc/httpd/conf/httpd.conf
-    notify: httpd_running
+      src: files/index.html.j2
+      dest: /var/www/html/index.html
 
-  handlers:
-  - name: httpd_running
-    service:
-      name: httpd
-      state: restarted
+
+
+
+
+
 
 </pre>
 		</div>
