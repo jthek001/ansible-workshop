@@ -17,11 +17,7 @@ $standard_prefs_file = "prefs/default.prefs.php";
 */
 
 $prefs_file = (file_exists($custom_prefs_file) ? $custom_prefs_file : $standard_prefs_file);
-# /Volumes/SDorage/Code/GoKEV/ansible-workshop/roles/ansiblered-deck-ansible/files/deck-ansible/
-print "<pre>$prefs_file</pre>\n";
-
-require_once("/Volumes/SDorage/Code/GoKEV/ansible-workshop/roles/ansiblered-deck-ansible/files/deck-ansible/" . $prefs_file);
-//require_once("$prefs_file);
+require_once($prefs_file);
 
 ?>
 <!doctype html>
