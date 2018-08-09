@@ -39,6 +39,9 @@ require_once($prefs_file);
       document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 
+	<script language="javascript" src="js/GoKEV.js"
+	<!-- Added some custome functions here -->
+	</script>
 
     <link rel="stylesheet" href="css/ansible.css">
 
