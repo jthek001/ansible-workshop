@@ -1,4 +1,4 @@
-<section id="AdHocCommands">
+<section id="AdHocCommands-Terminal">
 
 <center><h2>AD HOC COMMANDS</h2></center>
 
@@ -8,13 +8,13 @@
     </div>
     <pre class="bodyl">
 <font color="silver"># Check connections (submarine ping, not ICMP)</font>
-$ ansible all -m ping
+<font color="gray"><?=$terminal_prompt?></font> ansible all -m ping
 
 <font color="silver"># Run a command on all the hosts in the web group</font>
-$ ansible web -m command -a &quot;uptime&quot;
+<font color="gray"><?=$terminal_prompt?></font> ansible web -m command -a &quot;uptime&quot;
 
 <font color="silver"># Collect and display known facts</font>
-$ ansible localhost -m setup
+<font color="gray"><?=$terminal_prompt?></font> ansible localhost -m setup
     </pre>
 </div>
 

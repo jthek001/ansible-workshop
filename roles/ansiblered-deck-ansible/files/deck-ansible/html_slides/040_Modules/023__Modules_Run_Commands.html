@@ -1,4 +1,4 @@
-<section>
+<section id="CommandOptions">
 
           <h2>Modules: Run Commands</h2>
           <p>If Ansible doesn't have a module that suits your needs there are the “run command” modules:</p><br>
@@ -6,7 +6,6 @@
             <li><b>command</b>: Takes the command and executes it on the host. The most secure and predictable.</li>
             <li><b>shell</b>: Executes through a shell like <code>/bin/sh</code> so you can use pipes etc. Be careful.</li>
             <li><b>raw</b>: Executes a command  without going through the Ansible module subsystem.</li><br>
-            <li><b>script</b>: Runs a local script on a remote node after transferring it.</li>
           </ul>
           <p><br><b>NOTE:</b> Unlike standard modules, run commands have no concept of desired state and should only be used as a last resort.</p>
           <aside class="notes">
