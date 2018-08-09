@@ -6,5 +6,4 @@ workshop_name: Ansible Essentials Workshop
 workshop_presenter: '&nbsp;'
 workshop_title: '&nbsp;'
 workshop_message: '&nbsp;'
-terminal_prompt = '[ansible@redhat] $'
 
