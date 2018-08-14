@@ -1,6 +1,6 @@
 <?php
 
-$workshop_image = 'images/fussypants.jpg';
+$workshop_image = 'images/ansible-logo.png';
 $workshop_name = 'Ansible Essentials Workshop';
 $workshop_presenter = 'Matt St. Onge';
 $workshop_title = 'Senior Partner Solutions Architect';
