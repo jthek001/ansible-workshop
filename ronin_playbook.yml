@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    country_setting: France
+    city_opening_scene: Montmartre
+
+  vars_files:
+    - ronin_secret.yml
+
+  tasks:
+  - name: prove that we can read the variables within the file
+    debug:
+      msg: |
+        "{{ movie_title }} is a movie starring {{ movie_actor }}, 
+        where his character {{ movie_character }} says the words 
+        of wisdom: {{ movie_phrase }}.  The movie was set in 
+        the country of {{ country_setting }} with a magnificent 
+        opening scene in {{ city_opening_scene }}"
+
