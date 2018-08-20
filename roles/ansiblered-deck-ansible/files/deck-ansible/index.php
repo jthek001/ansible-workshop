@@ -3,22 +3,33 @@
 // I updated this here to be a variable so we can easily change it in other places in the deck, dynamically
 $module_count=1900;
 
+
 /*
 	We dynamically detect our currrent directory and use it for
 	all of our include paths since they must be absolute
 */
 
-$mydir = preg_replace("/\/index.php/","",$_SERVER['SCRIPT_FILENAME']);
+$myfile = preg_replace("/^.*\//","",$_SERVER['PHP_SELF']);
+$mydir = preg_replace("/$myfile/","",$_SERVER['SCRIPT_FILENAME']);
 $servervar = $_SERVER['HTTP_HOST'];
 $person = preg_replace("/^(.*?)\.(.*)$/","$1",$_SERVER['HTTP_HOST']);
 $custom_prefs_file = "prefs/" . $person . ".prefs.php";
 $standard_prefs_file = "prefs/default.prefs.php";
+
 
 /*
 	Default or customized titles for the first slide.
 	The default.prefs.php file here is a template and
 	is built dynamically via the Ansible playbook.
 */
+
+// print "<pre>\n";
+// print $_SERVER['DOCUMENT_ROOT'] . "\n";
+// print $myfile . "\n";
+// print $mydir . "\n";
+// print "</pre>\n";
+// 
+
 
 $prefs_file = (file_exists($custom_prefs_file) ? $custom_prefs_file : $standard_prefs_file);
 require_once($prefs_file);
@@ -91,6 +102,7 @@ foreach( $html_files as $key => $htmlinc){
 }
 
 ?>
+
         <section data-state="cover" id="GoodByeNow">
           <p class="ans-logo">
             <img src="<?=$workshop_image?>" height="250"><br>
