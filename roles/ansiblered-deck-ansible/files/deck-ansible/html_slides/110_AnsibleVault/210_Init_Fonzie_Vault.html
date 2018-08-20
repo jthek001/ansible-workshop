@@ -7,26 +7,25 @@
 		    <div class="top">
 		        <div class="title">Ansible Terminal</div>
 		    </div>
-		    <pre class="bodymw">
-<font color="gray"><?=$terminal_prompt?></font> ansible-vault encrypt_string 'Jumped The Shark' --name
- 'fonzie_secret'
+		    <pre class="bodysw">
+<font color="gray"><?=$terminal_prompt?></font> ansible-vault encrypt_string 'Jumped The Shark' --name 'fonzie_stunt'
 
+		    </pre>
+		</div>
 
+		<center><h2>Here are the pieces</h2>
+		<p>A breakdown of the command:</p>
+		</center>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		<div class="terminal space shadow">
+		    <div class="top">
+		        <div class="title">Ansible Terminal</div>
+		    </div>
+		    		    <pre class="bodylw">
+ansible-vault
+     encrypt_string 
+         'this phrase will be encrypted' 
+             --name 'variable_name_of_encrypted_var'
 
 		    </pre>
 		</div>
@@ -49,23 +48,28 @@
 		    <div class="top">
 		        <div class="title">Ansible Terminal</div>
 		    </div>
-		    <pre class="bodymw">
-<font color="gray"><?=$terminal_prompt?></font> ansible-vault encrypt_string 'Jumped The Shark' --name
- 'fonzie_secret'
- 
-New Vault password: <font color="red">redhat</font><img src="images/passwordkey.png"> 
-Confirm New Vault password: <font color="red">redhat</font><img src="images/passwordkey.png"> 
+		    <pre class="bodysw">
+<font color="gray"><?=$terminal_prompt?></font> ansible-vault encrypt_string 'Jumped The Shark' --name 'fonzie_stunt'
+New Vault password: <font color="red">fonzie</font><img src="images/passwordkey.png" width="10">
+Confirm New Vault password: <font color="red">fonzie</font><img src="images/passwordkey.png" width="10">
 
-fonzie_secret: !vault |
+fonzie_stunt: !vault |
           $ANSIBLE_VAULT;1.1;AES256
-          6632363237353065633237633937353164646564633
-          6376461326235386539663733343539666234332664
-          6664616266316339383838373734653364346163633
-          6663864366534633063303062363238393139
+          35613061636564623138646464393731633534343261393532343263633763356364633366636633
+          6430663339613762306235323035326663363665316234650a303434333462343731356632333136
+          37393966336465386131666635333537636133313864383865303138303262343939326563373730
+          3063376263303037340a356263333131626239316630653465313931353863623237666464613030
+          37346537336430386265633239346566313466323764336234346361626666643334
 
 Encryption successful
 
-<font color="gray"><?=$terminal_prompt?></font>f
+<?=$terminal_prompt?> 
+
+
+
+
+
+
 		    </pre>
 		</div>
 
@@ -83,7 +87,7 @@ Encryption successful
 
 		<section id="VaultInitFonzie03">
 		<center><h2>ANSIBLE VAULT: FONZIE (encrypted variable)</h2>
-		<p>Use ansible-vault to create a new encrypted variable string.</p>
+		<p>The pipe separates the multi-line value from the variable name.</p>
 		</center>
 
 		<div class="terminal space shadow">
@@ -91,20 +95,14 @@ Encryption successful
 		        <div class="title">Ansible Terminal</div>
 		    </div>
 		    <pre class="bodymw">
-<font color="gray"><?=$terminal_prompt?></font> ansible-vault encrypt_string 'Jumped The Shark' --name
- 'fonzie_secret'
- 
-New Vault password: <font color="red">redhat</font><img src="images/passwordkey.png"> 
-Confirm New Vault password: <font color="red">redhat</font><img src="images/passwordkey.png"> 
 
-<mark>fonzie_secret: !vault |
-          $ANSIBLE_VAULT;1.1;AES256
-          6632363237353065633237633937353164646564633
-          6376461326235386539663733343539666234332664
-          6664616266316339383838373734653364346163633
-          6663864366534633063303062363238393139</mark>
-
-Encryption successful
+fonzie_stunt:<mark> !vault | </mark>
+    $ANSIBLE_VAULT;1.1;AES256
+    35613061636564623138646464393731633534343261393532343263633763356364633366636633
+    6430663339613762306235323035326663363665316234650a303434333462343731356632333136
+    37393966336465386131666635333537636133313864383865303138303262343939326563373730
+    3063376263303037340a356263333131626239316630653465313931353863623237666464613030
+    37346537336430386265633239346566313466323764336234346361626666643334               
 
 
 		    </pre>
