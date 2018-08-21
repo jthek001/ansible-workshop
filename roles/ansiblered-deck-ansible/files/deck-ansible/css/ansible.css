@@ -423,6 +423,12 @@ svg .a-mark{
   display: block !important;
 }
 
+.lab.alt .slide-background.present{
+  background-color: #A9A9A9	;
+  display: block !important;
+}
+
+
 .cover .present,
 .cover .present h1,
 .cover .present h2,

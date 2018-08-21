@@ -1,9 +1,32 @@
 <?php
 
 // I updated this here to be a variable so we can easily change it in other places in the deck, dynamically
+
 $module_count=1900;
 
+$dry_run = (isset($_GET['dryrun']) ? 1 : 0);
 
+
+/* LAB LIMITs
+	0 = No Restrictions		/deck-ansible/
+	1 = Only Labs			/deck-ansible/?labs/
+	2 = No Labs, only deck	/deck-ansible/?nolabs/
+*/
+
+
+$lab_limit = (isset($_GET['labs']) ? 1 : 0);
+$lab_limit = (isset($_GET['nolabs']) ? 2 : $lab_limit);
+
+if (! isset($_GET['force'])) $lab_limit = 2;
+
+if (isset($_GET['force'])) print "LAB LIMIT ";
+if ((isset($_GET['force'])) and ($lab_limit == 0)) print "0 = Deck + Labs /deck-ansible/";
+if ((isset($_GET['force'])) and ($lab_limit == 1)) print "1 = Only Labs /deck-ansible/?labs/";
+if ((isset($_GET['force'])) and ($lab_limit == 2)) print "2 = No Labs, only deck /deck-ansible/?nolabs/";
+
+
+
+//$lab_limit\n";
 /*
 	We dynamically detect our currrent directory and use it for
 	all of our include paths since they must be absolute
@@ -23,127 +46,109 @@ $standard_prefs_file = "prefs/default.prefs.php";
 	is built dynamically via the Ansible playbook.
 */
 
-// print "<pre>\n";
-// print $_SERVER['DOCUMENT_ROOT'] . "\n";
-// print $myfile . "\n";
-// print $mydir . "\n";
-// print "</pre>\n";
-// 
-
 
 $prefs_file = (file_exists($custom_prefs_file) ? $custom_prefs_file : $standard_prefs_file);
 require_once($prefs_file);
+if (! $dry_run){
+	require_once("page_first.html");
+}else{
+	?>
+<pre>
+RUNNING IN DRY RUN with LAB LIMIT SET TO <?=$lab_limit?>
 
-?>
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ 0 = No Restrictions		/deck-ansible/
+ 1 = Only Labs			/deck-ansible/?labs/
+ 2 = No Labs, only deck		/deck-ansible/?nolabs/
 
-    <title>Ansible Essentials Workshop</title>
-
-    <link rel="stylesheet" href="css/reveal.css">
-
-    <!-- Printing and PDF exports -->
-    <script>
-      var link = document.createElement( 'link' );
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/pdf.css' : 'css/paper.css';
-      document.getElementsByTagName( 'head' )[0].appendChild( link );
-    </script>
-
-	<script language="javascript" src="js/GoKEV.js"
-	<!-- Added some custome functions here -->
-	</script>
-
-    <link rel="stylesheet" href="css/ansible.css">
-
-    <!-- Theme used for syntax highlighting of code -->
-    <!--link rel="stylesheet" href="css/zenburn.css"-->
-    <link rel="stylesheet" href="css/prism.min.css">
-
-    <link rel="stylesheet" href="css/GoKEV.css">
-    <link rel="stylesheet" href="css/faketerminal.css">
-
-  </head>
-  <body>
-  <div class="ans-mark">
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-449 450 125 125" style="enable-background:new -449 450 125 125;" xml:space="preserve">
-      <g id="XMLID_3_">
-        <circle id="XMLID_7_" class="circle" cx="-386.5" cy="512.5" r="62"/>
-        <path id="XMLID_4_" class="a-mark" d="M-356.9,537.1l-24.7-59.4c-0.7-1.7-2.1-2.6-3.9-2.6c-1.7,0-3.2,0.9-4,2.6l-27.1,65.2h9.2 l10.7-26.9l32,25.9c1.3,1,2.2,1.5,3.4,1.5c2.4,0,4.6-1.8,4.6-4.5C-356.5,538.5-356.6,537.8-356.9,537.1z M-385.4,488.4l16.1,39.6 l-24.2-19L-385.4,488.4z"/>
-      </g>
-    </svg>
-  </div>
-    <div class="reveal">
-      <div class="slides">
-        <section data-state="cover">
-          <p class="ans-logo">
-            <img src="<?=$workshop_image?>" height="250"><br>
-            <img src="images/ansible-wordmark-white.svg" width="260" alt="" />
-          </p>
-          <h1><?=$workshop_name?></h1>
-          <h2><?=$workshop_presenter?></h2>
-          <p><?=$workshop_title?></p>
-          <p><?=$workshop_message?></p>
-        </section>
-
-<?php
-
-/*	We build an array and include each HTML slides from the diretory*/
-$html_dir = $mydir . "/html_slides";
-$html_files = explode("\n",shell_exec("find $html_dir -maxdepth 3 -type f -iname \"*html\" | sort"));
-foreach( $html_files as $key => $htmlinc){
-	$localdir = str_replace($html_dir . '/',"",$htmlinc);
-	$localfile = preg_replace("/^.*\//","",$htmlinc);
-	if ( (file_exists($htmlinc)) and (!preg_match("/^_/",$localdir)) and (!preg_match("/^_/",$localfile)) ) include($htmlinc);
+######################################################
+	<?php
 }
 
+
+
+/*	We build an array of each directory*/
+$html_dir = $mydir . "html_slides";
+$html_topics = explode("\n",shell_exec("find $html_dir -maxdepth 1 -type d  | sort"));
+
+/*	We scan each dir and include each HTML slides from the diretory*/
+
+foreach( $html_topics as $key => $htmldir){
+	$pretty_htmldir = preg_replace("/^.*\/html_slides/","",$htmldir);
+	$pretty_htmldir = preg_replace("/^.*\//","",$pretty_htmldir);
+	$pretty_htmldir = preg_replace("/^[0-9]+_+/","",$pretty_htmldir);
+	$pretty_htmldir = preg_replace("/^[0-9]+_+/","",$pretty_htmldir);
+	$pretty_htmldir = preg_replace("/_+/"," ",$pretty_htmldir);
+
+	$html_files = explode("\n",shell_exec("find $htmldir -maxdepth 1 -type f -iname \"*html\" | sort"));
+	$html_files = array_filter($html_files);
+
+	if (count($html_files)){
+		if ($dry_run) print "\n#$key \"$pretty_htmldir\" contains " . count($html_files) . " slides\n\n";
+		$labid = "LABS-" . preg_replace("/[^0-9a-zA-Z]+/","", $pretty_htmldir);
+		
+		foreach( $html_files as $key => $htmlinc){
+			if (($dry_run) and ($lab_limit != 1)) print "INCLUDE $htmlinc\n";
+			$localdir = str_replace($html_dir . '/',"",$htmlinc);
+			$localfile = preg_replace("/^.*\//","",$htmlinc);
+
+			if ((! $dry_run) and ($lab_limit != 1 )) {
+				if ( (file_exists($htmlinc)) and (!preg_match("/^_/",$localdir)) and (!preg_match("/^_/",$localfile)) ) include($htmlinc);
+			}
+
+		}
+
+		if ($lab_limit != 2){
+			$lab_files = explode("\n",shell_exec("find $htmldir/labs -maxdepth 1 -type f -iname \"*html\" | sort"));
+			$lab_files = array_filter($lab_files);
+
+			if (count($lab_files)){
+				if ($dry_run){
+					print "\nSTART-LAB-INCLUDE for \"$pretty_htmldir\"\n\n";
+				}else{
+					?>
+	<section>
+		<section data-state="lab alt" id="<?=$labid?>-Start">
+			<h1>LABS:<br><?=$pretty_htmldir?></h1>
+			<p>Click down arrow to continune into the labs</p>
+
+		</section>
+					<?php
+				}
+
+
+				foreach( $lab_files as $key => $labinc){
+					if ($dry_run){
+						print "INCLUDE-LABS $labinc\n";
+					}else{
+						$labdir = str_replace($html_dir . '/',"",$labinc);
+						$labfile = preg_replace("/^.*\//","",$labinc);
+
+						if ( (file_exists($labinc)) and (!preg_match("/^_/",$labdir)) and (!preg_match("/^_/",$labfile)) ) include($labinc);
+
+	//					print " $labinc\n";
+					}
+				}
+
+				if ($dry_run){
+					print "\nEND-LAB-INCLUDE for \"$pretty_htmldir\"\n";
+				}else{
+					?>
+		<section data-state="lab alt" id="<?=$labid?>-Finish">
+			<h1>LABS:<br><?=$pretty_htmldir?> Complete!</h1>
+			<p>Click right to continune</p>
+		</section>
+
+	</section>
+					<?php
+				}
+			}
+		}
+	}
+}
+
+if ($dry_run) print "</pre>\n";
+if (! $dry_run) require_once("page_final.html");
+
 ?>
 
-        <section data-state="cover" id="GoodByeNow">
-          <p class="ans-logo">
-            <img src="<?=$workshop_image?>" height="250"><br>
-            <img src="images/ansible-wordmark-white.svg" width="260" alt="" />
-          </p>
-          <p>Thank you for attending<br>
-          <h2><?=$workshop_name?></h2>
-          <p><?=$workshop_presenter?><br>
-          <?=$workshop_title?><br>
-          <?=$workshop_message?></p>
-        </section>
-
-
-
-      </div>
-    </div>
-
-    <script src="js/head.min.js"></script>
-    <script src="js/reveal.js"></script>
-
-    <script>
-      // More info https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-        history: true,
-        width: "85%",
-        height: "90%",
-        transition: "fade",
-
-        // More info https://github.com/hakimel/reveal.js#dependencies
-        // Notes plugin must remain local for now.
-        // See https://github.com/ansible/lightbulb/issues/125
-        dependencies: [
-          { src: 'js/marked.js' },
-          { src: 'js/markdown.js' },
-          { src: 'js/notes.js', async: true },
-          { src: 'js/prism.min.js'},
-          { src: 'js/prism-yaml.min.js'}
-          //{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-        ]
-      });
-    </script>
-  </body>
-</html>
 
