@@ -1,7 +1,9 @@
 <?php
 
 // I updated this here to be a variable so we can easily change it in other places in the deck, dynamically
-$module_count=1900;
+$module_count="2100+";
+$gihub_stars="33,500+";
+$download_permonth="50,000+";
 
 /*
 	We dynamically detect our currrent directory and use it for
